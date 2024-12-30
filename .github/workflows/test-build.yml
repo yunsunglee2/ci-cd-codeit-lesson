@@ -12,6 +12,7 @@ on:
   # Filtering Event
     branches:
       - dev
+      - "feat/**"
 
   workflow_dispatch:
     branches:
