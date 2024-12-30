@@ -3,12 +3,12 @@ name: Run test and build
 on: push
 
 jobs:
-  startegy:
-    matrix:
-      node-version: [12,18]
-
   test:
+    startegy:
+      matrix:
+        node-version: [12,18]
     runs-on: ubuntu-latest
+
     steps:
       - name: Get Codes
         uses: actions/checkout@v4
@@ -16,11 +16,13 @@ jobs:
       # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Test
+      - name: Run Tests
         run: npm run test
 
   build:
