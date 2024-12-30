@@ -1,0 +1,8 @@
+  name: Context Object
+  on: workflow_dispatch
+  jobs: 
+    print-context-object:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Print Context Object
+          run: echo "${{ toJSON(github) }}"
