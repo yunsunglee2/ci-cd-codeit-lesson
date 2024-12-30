@@ -1,0 +1,17 @@
+# main 브랜치에 push를 하면
+# 테스트 -> 빌드
+
+name: Run Test And Build
+# push 이벤트 대해서만 트리거된다.
+# on: push
+# push,workflow_dispatch(manually trigger)
+# 이벤트 대해서만 트리거된다.
+on: [push, workflow_dispatch]
+jobs:
+  # 1. 테스트 job
+  test:
+    runs-on: ubuntu-latest
+    steps:
+        # 코드를 가져옴
+      - name: Get Codes
+        uses: actions/checkout@v4
