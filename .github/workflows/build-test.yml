@@ -1,16 +1,21 @@
 name: Run test and build
 
-on:
-  pull_request:
-    branches:
-      - main
+on: push
 
 jobs:
+  startegy:
+    matrix:
+      node-version: [12,18]
+
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Get Codes
         uses: actions/checkout@v4
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
 
       - name: Install Dependencies
         run: npm install
