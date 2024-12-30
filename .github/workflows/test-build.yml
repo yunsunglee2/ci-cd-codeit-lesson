@@ -12,6 +12,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-        # 코드를 가져옴
+      # 코드를 가져옴
       - name: Get Codes
         uses: actions/checkout@v4
+
+      # 의존성 파일들 설치
+      - name: Install Dependencies
+        run: npm install
+
+      # 테스트 실행
+      - name: Run Test
+        run: npm run test
