@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
-import Query, { noEmptyString } from "./page";
+import Query from "./page";
 import { FetchDataComponent } from "../components/fetch";
 
 describe("Query Page Test", () => {
