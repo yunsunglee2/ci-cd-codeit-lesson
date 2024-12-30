@@ -47,8 +47,6 @@ describe("Data Fetching Component Test Suite", () => {
 
     const postBody = await screen.findByText(/body:/i);
 
-    screen.debug();
-
     await waitFor(() => {
       const postbodyByGetBy = screen.getByText(/body:/i);
       expect(postbodyByGetBy).toBeInTheDocument();
