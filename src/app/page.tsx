@@ -44,7 +44,7 @@ export default function Home() {
 
   const url = process.env.NEXT_PUBLIC_API_URL;
   if(!url) {
-    throw new Error('env error');
+    throw new Error('env error!');
   }
 
   return (
