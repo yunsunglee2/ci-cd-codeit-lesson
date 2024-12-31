@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Providers from "./components/provider";
 
@@ -29,7 +30,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-neutral-100 antialiased`}
       >
         <div className="w-full h-screen flex flex-col items-center justify-center">
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+            <SpeedInsights />
+          </Providers>
         </div>
       </body>
     </html>
