@@ -32,8 +32,9 @@ jobs:
     name: Create PR
     runs-on: ubuntu-latest
     steps:
-      - name: Downloads Codes
+      - name: Get Codes
         uses: actions/checkout@v4
+
       - name: create pr
         uses: peter-evans/create-pull-request@v7
         with:
