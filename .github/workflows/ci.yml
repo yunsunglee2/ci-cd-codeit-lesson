@@ -42,3 +42,4 @@ jobs:
           body: "this is a test pr"
           base: main
           branch: ${{ github.ref }}
+          token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
