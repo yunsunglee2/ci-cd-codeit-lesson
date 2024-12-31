@@ -8,6 +8,8 @@ on:
 
 # 1. test
 # 2. PR
+env:
+  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
 jobs: 
   run-test:
     name: Run Test
