@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - dev
-      - "feat/**"
+      - "feat/**" # Feature 브랜치 패턴
 
 # 1. test
 # 2. PR
