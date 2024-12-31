@@ -37,7 +37,7 @@ jobs:
         with:
           title: "chore: create pr test"
           body: "this is a test pr"
-          # merge 될 브랜치
+          # merge 할 브랜치
           base: main
           branch: ${{ github.ref }}
           token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
