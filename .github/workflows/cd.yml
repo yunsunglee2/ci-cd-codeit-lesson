@@ -1,0 +1,32 @@
+name: CD
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+env:
+  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+
+jobs:
+  if_merged:
+    name: Test, Build, Deploy
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+    - name: Get Codes
+      uses: actions/checkout@v4
+
+    - name: Install Deps
+      run: npm install
+
+    - name: Run Test
+      run: npm run test
+
+    - name: Run Build
+      run: npm run build
+
+    - name: Deploy
+      run: curl ${{ secret.DEPLOY_HOOK }}
