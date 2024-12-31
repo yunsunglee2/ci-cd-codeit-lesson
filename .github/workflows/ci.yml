@@ -1,25 +1,26 @@
 name: CI
+
 on:
   push:
     branches:
       - dev
       - "feat/**"
 
-      # 1. test
-      # 2. PR
-      jobs: 
-        run-test:
-          name: Run Test
-          runs-on: ubuntu-latest
-          steps:
-            - name: Get Codes
-              uses: actions/checkout@v4
+# 1. test
+# 2. PR
+jobs: 
+  run-test:
+    name: Run Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Codes
+        uses: actions/checkout@v4
 
-            - name: Install Deps
-              run: npm install
+      - name: Install Deps
+        run: npm install
 
-            - name: Run Test
-              run: npm run test
+      - name: Run Test
+        run: npm run test
 
-            - name: Run Build
-              run: npm run build
+      - name: Run Build
+        run: npm run build
