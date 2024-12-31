@@ -1,21 +1,18 @@
 name: CI
-
 on:
   push:
     branches:
       - dev
       - "feat/**"
 
-# 1. test
-# 2. PR
 env:
   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-jobs: 
+jobs:
   run-test:
     name: Run Test
     runs-on: ubuntu-latest
     steps:
-      - name: Get Codes
+      - name: Downloads Codes
         uses: actions/checkout@v4
 
       - name: Install Deps
@@ -32,7 +29,7 @@ jobs:
     name: Create PR
     runs-on: ubuntu-latest
     steps:
-      - name: Get Codes
+      - name: Downloads Codes
         uses: actions/checkout@v4
 
       - name: create pr
@@ -40,6 +37,7 @@ jobs:
         with:
           title: "chore: create pr test"
           body: "this is a test pr"
+          # merge가 될 브랜치
           base: main
           branch: ${{ github.ref }}
           token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
