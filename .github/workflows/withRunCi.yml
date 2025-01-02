@@ -9,10 +9,18 @@ on:
 
 # 코드를 "build"하고 "test" 코드를 통해 검사한다.
 jobs:
-  testAndBuild:
+  run-test:
+    name: Run Test
     # 해당 작업이 어느 환경에서 돌아가는지에 대해서 명시한다.
     runs-on: ubuntu-latest
     steps:
-      - run: echo
+      - name: Get Codes
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+      - run: npm install
+
+      - name: Run Test
+      - run: npm run test
 
 # 빌드와 테스트가 모두 성공적으로 끝난다면 PR 템플렛을 생성한다.
