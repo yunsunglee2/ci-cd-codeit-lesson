@@ -1,0 +1,17 @@
+# .github 폴더 생성 후 그 안에 workflows 폴더 생성
+# workflows 폴더에 .yml 파일을 생성
+
+# 개발자가 작업이 끝나고 브랜치에 "push" 한다.
+name: withRunCi
+on: 
+  push:
+    branches: [dev]
+
+# 코드를 "build"하고 "test" 코드를 통해 검사한다.
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo
+
+# 빌드와 테스트가 모두 성공적으로 끝난다면 PR 템플렛을 생성한다.
