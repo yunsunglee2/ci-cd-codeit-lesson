@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Codes
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Install Dependencies
-      - run: npm install
+        run: npm install
 
       - name: Run Test
-      - run: npm run test
+        run: npm run test
 
 # 빌드와 테스트가 모두 성공적으로 끝난다면 PR 템플렛을 생성한다.
