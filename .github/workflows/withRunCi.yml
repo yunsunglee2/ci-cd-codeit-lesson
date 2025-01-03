@@ -22,21 +22,25 @@ jobs:
         uses: actions/cache@v4
         id: npm-cache
         with: 
-          path: ~/.npm
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
       - if: steps.npm-cache.outputs.cache-hit == 'true'
         run: echo 'npm cache hit!'
+
       - if: steps.npm-cache.outputs.cache-hit != 'true'
         run: echo 'npm cache missed!'
 
-          path:
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-  # Generate a new cache whenever packages or source files change.
-  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-  # If source files changed but packages didn't, rebuild from a prior cache.
-  restore-keys: |
-    ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: Add Next.js Source Cache
+        uses: actions/cache@v4
+        id: nextjs-cache
+        with:
+          # Next.js 소스 파일 및 패키지 변경에 따라 새로운 캐시 생성
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
 
       - name: 3. Install Dependencies
         run: npm ci
