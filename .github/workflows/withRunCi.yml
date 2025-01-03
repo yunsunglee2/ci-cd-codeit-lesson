@@ -17,7 +17,7 @@ jobs:
       - name: 1. Get Codes
         uses: actions/checkout@v4
 
-      첫
+      # 이전에 설치한 파일 캐시하여 사용
       - name: 2. Add Cache
         uses: actions/cache@v4
         id: npm-cache
