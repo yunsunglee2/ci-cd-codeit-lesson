@@ -29,6 +29,15 @@ jobs:
       - if: steps.npm-cache.outputs.cache-hit != 'true'
         run: echo 'npm cache missed!'
 
+          path:
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+  # Generate a new cache whenever packages or source files change.
+  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+  # If source files changed but packages didn't, rebuild from a prior cache.
+  restore-keys: |
+    ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
       - name: 3. Install Dependencies
         run: npm ci
 
