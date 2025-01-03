@@ -42,10 +42,10 @@ export default function Home() {
     fetchAllTodos().then((items) => setTodos(items));
   }, []);
 
-  const url = process.env.NEXT_PUBLIC_API_URL;
-  if(!url) {
-    throw new Error('env error!');
-  }
+  // const url = process.env.NEXT_PUBLIC_API_URL;
+  // if(!url) {
+  //   throw new Error('env error!');
+  // }
 
   return (
     <main className="p-4 rounded-md bg-white shadow-md w-full max-w-md flex flex-col">
