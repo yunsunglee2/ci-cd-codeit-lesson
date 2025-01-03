@@ -13,9 +13,11 @@ jobs:
     name: Run Test
     runs-on: ubuntu-latest
     steps:
+    # 저장소에 있는 코드를 ci 서버로 다운로드 받는다
       - name: 1. Get Codes
         uses: actions/checkout@v4
 
+      첫
       - name: 2. Add Cache
         uses: actions/cache@v4
         id: npm-cache
@@ -28,7 +30,7 @@ jobs:
         run: echo 'npm cache missed!'
 
       - name: 3. Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: 4. Run Test
         run: npm run test
