@@ -18,9 +18,14 @@ jobs:
 
       - name: 2. Add Cache
         uses: actions/cache@v4
+        id: npm-cache
         with: 
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - if: steps.npm-cache.outputs.cache-hit == 'true'
+        run: echo 'npm cache hit!'
+      - if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: echo 'npm cache missed!'
 
       - name: 3. Install Dependencies
         run: npm install
