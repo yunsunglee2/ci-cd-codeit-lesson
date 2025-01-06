@@ -2,5 +2,14 @@ name: Our Jobs
 on: push
 jobs:
   job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.job }}
   job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.job }}
   job3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.job }}
