@@ -8,9 +8,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-    test:
-      runs-on: unbuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - run: npm ci
-        - run: npm test -- --coverage
+  test:
+    runs-on: unbuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm test -- --coverage
